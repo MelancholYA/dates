@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import moment from 'moment';
+import Appointments from './componants/Appointments';
+import './style/main.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	let appointmentsArray = [
+		{
+			address: 'test street 123',
+			postalcode: '90210 CA',
+			customer: 'Michael',
+			duration: 1,
+			plannedTime: moment(),
+		},
+		{
+			address: 'test street 123',
+			postalcode: '90210 CA',
+			customer: 'Michael',
+			duration: 1,
+			plannedTime: moment(),
+		},
+		{
+			address: 'test street 123',
+			postalcode: '90210 CA',
+			customer: 'Michael',
+			duration: 1,
+			plannedTime: moment(),
+		},
+	];
+	const generateMonthsAppointments = () => {
+		for (let i = 0; i < 150; i++) {
+			let appointment = {
+				address: 'test street 123',
+				postalcode: '90210 CA',
+				customer: 'Michael',
+				duration: 1,
+				plannedTime: moment('2021-11-28T12:05:00.000Z').add(
+					Math.floor(Math.random() * 10) + 1,
+					'days',
+				),
+			};
+			appointmentsArray.push(appointment);
+		}
+	};
+	generateMonthsAppointments();
+	console.log(appointmentsArray);
+	return (
+		<div className='App'>
+			<Appointments data={appointmentsArray} />
+		</div>
+	);
 }
 
 export default App;
